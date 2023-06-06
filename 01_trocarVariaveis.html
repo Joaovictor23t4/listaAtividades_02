@@ -6,10 +6,12 @@
     */
 
     //ENTRADA
-
+    let int1 = Number(prompt(`Insira um número inteiro`));
+    let int2 = Number(prompt(`Insira outro número inteiro`));
     //PROCESSAMENTO
-
+    let auxiliar = int1;
+    int1 = int2;
+    int2 = auxiliar;
     //SAÍDA
-
-    
+    alert(`Invertendo os números fica: primeiro número ${int1} e segundo número ${int2}`);
 </script>
