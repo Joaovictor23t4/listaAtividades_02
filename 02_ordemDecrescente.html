@@ -1,15 +1,77 @@
-<script>
-    /*
-    //PROBLEMA
-    Faça um script que leia três números e mostre-os em ordem decrescente.
-    */
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
 
-    //ENTRADA
-    let num1 = Number(prompt(`Informe um número`));
-    let num2 = Number(prompt(`Informe um outro número`));
-    let num3 = Number(prompt(`Informe mais número`));
-    //PROCESSAMENTO
-    
-    //SAÍDA
-    
-</script>
+    <h1>
+        Programa Ordem Decrescente
+    </h1>
+
+    <p>
+        Número 1:
+        <input type="number" name="num1" id="inNum1">
+    </p>
+
+    <p>
+        Número 2:
+        <input type="number" name="num2" id="inNum2">
+    </p>
+
+    <p>
+        Número 3:
+        <input type="number" name="num3" id="inNum3">
+    </p>
+
+    <p>
+        <input type="button" value="Ordem Decrescente" id="btOrdem">
+    </p>
+
+    <p id="outOrdemD"></p>
+
+  <script>
+   function verOrdem() {
+    let inNum1 = document.getElementById("inNum1").value;
+    let inNum2 = document.getElementById("inNum2").value;
+    let inNum3 = document.getElementById("inNum3").value;
+
+    if (inNum1 > inNum2 && inNum1 >inNum3) {
+        if(inNum2 >inNum3) {
+            document.getElementById("outOrdemD").textContent = `${inNum1}, ${inNum2} e ${inNum3}`;
+        }
+
+        else {
+            document.getElementById("outOrdemD").textContent = `${inNum1}, ${inNum3} e ${inNum2}`;
+        }
+    }
+
+    else if (inNum2 > inNum1 && inNum2 > inNum3) {
+        if  (inNum1 > inNum3) {
+             document.getElementById("outOrdemD").textContent = `${inNum2}, ${inNum1} e ${inNum3}`;
+        }
+
+        else {
+            document.getElementById("outOrdemD").textContent = `${inNum2}, ${inNum3} e ${inNum1}`;
+        }
+    }
+
+    else {
+        if (inNum1 > inNum2) {
+            document.getElementById("outOrdemD").textContent = `${inNum3}, ${inNum1} e ${inNum2}`;
+        }
+
+        else {
+            document.getElementById("outOrdemD").textContent = `${inNum3}, ${inNum2} e ${inNum1}`;
+        }
+    }
+}
+
+let btOrdem = document.getElementById ("btOrdem");
+btOrdem.addEventListener("click", verOrdem);
+</script>  
+</body>
+</html>
