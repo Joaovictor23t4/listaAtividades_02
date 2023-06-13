@@ -1,19 +1,103 @@
-<script>
-    /*
-    //PROBLEMA
-    Faça um script que faça 5 perguntas para uma pessoa sobre um crime. As perguntas são:
-    - "Telefonou para a vítima?"
-    - "Esteve no local do crime?"
-    - "Mora perto da vítima?"
-    - "Devia para a vítima?"
-    - "Já trabalhou com a vítima?"
-    O script deve no final emitir uma classificação sobre a participação da pessoa no crime. Se a pessoa responder positivamente a 2 questões ela deve ser classificada como "Suspeita", entre 3 e 4 como "Cúmplice" e 5 como "Assassino". Caso contrário, ele será classificado como "Inocente".
-    */
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investigação Criminal</title>
+</head>
+<body>
+    <h1>Programa Investigação</h1>
 
-    //ENTRADA
+    <p>Responda com SIM ou com NÃO</p>
 
-    //PROCESSAMENTO
+    <p>Telefonou para a vitíma?
+        <input type="text" name="inTelefonou" id="inTelefonou"/>
+    </p>
 
-    //SAÍDA
+    <p>Esteve no local do crime?
+        <input type="text" name="inEsteveLocal" id="inEsteveLocal"/>
+    </p>
 
-</script>
+    <p>Mora perto da vitíma?
+        <input type="text" name="inMoraPerto" id="inMoraPerto"/>
+    </p>
+
+    <p>Devia para a vitíma?
+        <input type="text" name="inDevia" id="inDevia"/>
+    </p>
+
+    <p>Já trabalhou com a vitíma?
+        <input type="text" name="inTrabalhou" id="inTrabalhou"/>
+    </p>
+
+    <p>
+        <input type="button" value="Ver Sentença" name="btSentenca" id="btSentenca"/>
+    </p>
+
+    <h3 id="outInocente"></h3>
+    <h3 id="outSuspeita"></h3>
+    <h3 id="outCumplice"></h3>
+    <h3 id="outAssassina"></h3>
+
+    <script>
+        /*
+        //PROBLEMA
+        Faça um script que faça 5 perguntas para uma pessoa sobre um crime. As perguntas são:
+        - "Telefonou para a vítima?"
+        - "Esteve no local do crime?"
+        - "Mora perto da vítima?"
+        - "Devia para a vítima?"
+        - "Já trabalhou com a vítima?"
+        O script deve no final emitir uma classificação sobre a participação da pessoa no crime. Se a pessoa responder positivamente a 2 questões ela deve ser classificada como "Suspeita", entre 3 e 4 como "Cúmplice" e 5 como "Assassino". Caso contrário, ele será classificado como "Inocente".
+        */
+    
+        //ENTRADA
+        function julgamento() {
+            let inTelefonou = document.getElementById("inTelefonou").value.toUpperCase();
+            let inEsteveLocal = document.getElementById("inEsteveLocal").value.toUpperCase();
+            let inMoraPerto = document.getElementById("inMoraPerto").value.toUpperCase();
+            let inDevia = document.getElementById("inDevia").value.toUpperCase();
+            let inTrabalhou = document.getElementById("inTrabalhou").value.toUpperCase();
+        }
+        //PROCESSAMENTO
+        let pontos = 0;
+        if (inTelefonou === "SIM") {
+            pontos = pontos + 1;
+        }
+        if (inEsteveLocal === "SIM") {
+            pontos = pontos + 1;
+        }
+
+        if (inMoraPerto === "SIM") {
+            pontos = pontos + 1;
+        }
+
+        if (inDevia === "SIM") {
+            pontos = pontos + 1;
+        }
+
+        if (inTrabalhou === "SIM") {
+            pontos === pontos + 1;
+        }
+
+        if (pontos === 2) {
+            document.getElementById("outSuspeita").textContent = `Julgamento: Suspeita`
+        }
+
+        else if (pontos === 3 || pontos === 4) {
+            document.getElementById("outCumplice").textContent = `Julgamento: Cúmplice`
+        }
+
+        else if (pontos === 5) {
+            document.getElementById("outAssassina").textContent = `Julgamento: Assassina`
+        }
+
+        else if (pontos === 0) {
+            document.getElementById("outInocente").textContent = `Julgamento: Inocente`
+        }
+        //SAÍDA
+    let btSentenca = document.getElementById("btSentenca");
+    btSentenca.addEventListener("click", julgamento);
+    </script>
+</body>
+</html>

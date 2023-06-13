@@ -1,12 +1,64 @@
-<script>
-    //Problema
-    // Receba os três lados de um triângulo. Informe se os valores podem ser um triângulo. Indique, caso os lados formem um triângulo, se o mesmo é: equilátero, isósceles ou escaleno. Dica: pesquise sobre a regra para saber se os lados formam um triângulo e também sobre os tipos de triângulos.
+<!DOCTYPE html>
+<html lang="pt-BR">
 
-    //Entrada
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Triângulos</title>
+</head>
 
+<body>
 
-    //Processamento
+    <h1>Programas Lados de um Triângulo</h1>
 
+    <p>Lado A:
+        <input type="number" name="ladoA" id="inLadoA" />
+    </p>
 
-    //Saída
-</script>
+    <p>Lado B:
+        <input type="number" name="ladoB" id="inLadoB" />
+    </p>
+
+    <p>Lado C:
+        <input type="number" name="ladoC" id="inLadoC" />
+    </p>
+
+    <p><input type="button" value="Verificar Lados" name="btVerificar" id="btVerificar" /</p>
+
+    <h3 id="outPodeFormar"></h3>
+    <h3 id="outNaoPodeFormar"></h3>
+    <h3 id="outTipo"></h3>
+    <script>
+        function verificarLados() {
+            let inLadoA = document.getElementById("inLadoA").value;
+            let inLadoB = document.getElementById("inLadoB").value;
+            let inLadoC = document.getElementById("inLadoC").value;
+
+            if ((inLadoB + inLadoC) > inLadoA || (inLadoA + inLadoB) > inLadoC || (inLadoA + inLadoC) > inLadoB) {
+                document.getElementById("outPodeFormar").textContent = `Pode formar um triângulo`;
+
+                if (inLadoA === inLadoB && inLadoA === inLadoC) {
+                    document.getElementById("outTipo").textContent = `Tipo: Equilatero`;
+                }
+
+                else if (inLadoA !== inLadoB && inLadoA !== inLadoC && inLadoB !== inLadoC) {
+                    document.getElementById("outTipo").textContent = `Tipo: Escaleno`;
+                }
+
+                else {
+                    document.getElementById("outTipo").textContent = `Tipo: Isósceles`;
+                }
+
+            }
+
+            else {
+                document.getElementById("outNaoPodeFormar").textContent = `Não pode formar um triângulo`;
+            }
+        }
+
+        let btVerificar = document.getElementById("btVerificar");
+        btVerificar.addEventListener("click", verificarLados);
+    </script>
+</body>
+
+</html>
