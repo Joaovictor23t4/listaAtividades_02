@@ -14,7 +14,7 @@
     </p>
 
     <p>
-        <input type="button" value="Ver Casas" name="btSistema" id="btSistema"/>
+        <input type="button" value="Ver Casas" name="btSistemas" id="btSistemas"/>
     </p>
 
     <h3 id="outSistemas"></h3>
@@ -28,31 +28,41 @@
         let dezenas = Math.floor ((inNum % 100)/10);
         let unidades = Math.floor((inNum % 10)/1);
 
-        if (inNum >= 200) {
-            if (dezenas !== 1 && unidades !== 1) {
-            document.getElementById("outSistemas").textContent = `${centenas} centenas, ${dezenas} dezenas e ${unidades} unidades;`
-        } else if (dezenas === 1 && unidades !== 1) {
-            document.getElementById("outSistemas").textContent = `${centenas} centenas, 1 dezena e ${unidades} unidades`;
-        } else if (dezenas !== 1 && unidades === 1) {
-            document.getElementById("outSistemas").textContent = `${centenas} centenas, ${dezenas} dezenas e 1 unidade`;
-        } else {
-            document.getElementById("outSistemas").textContent = `${centenas} centenas, 1 dezena e 1 unidade `
+        let mensagemFinal = "";
+
+        if (centenas > 0) {
+            mensagemFinal = mensagemFinal + `${centenas} Centena`;
+            if (centenas > 1) {
+                mensagemFinal = mensagemFinal + "s";
+            }
+            if (dezenas > 0 && unidades > 0) {
+                mensagemFinal = mensagemFinal + ", ";
+            }
+            else if (dezenas > 0 || unidades > 0) {
+                mensagemFinal = mensagemFinal + " e ";
+            }
         }
-    }
+        if (dezenas > 0) {
+            mensagemFinal = mensagemFinal + `${dezenas} Dezena`;
+            if (dezenas > 1) {
+                mensagemFinal = mensagemFinal + "s";
+            }            
+            if (unidades > 0) {
+                mensagemFinal = mensagemFinal + " e ";
+            }
+        }
+        if (unidades > 0) {
+            mensagemFinal = mensagemFinal + `${unidades} Unidade`;
+            if (unidades > 1) {
+                mensagemFinal = mensagemFinal + "s";
+            }
+        }
 
-    else if (inNum = 111) {
-        document.getElementById("outSistemas").textContent = `1 centena, 1 dezena e 1 unidade`;
-    }
-
-    else if (centenas === 1 && dezenas !== 1 && unidades !== 1) {
-        document.getElementById("outSistemas").textContent = `1 centena, ${dezenas} dezenas e ${unidades} unidades`
-    }
-
-    
+    document.getElementById("outSistemas").textContent = `${mensagemFinal}`
 }
 
-    let btSistema = document.getElementById("btSistema");
-    btSistema.addEventListener("click", calcularNumero)
+    let btSistemas = document.getElementById("btSistemas");
+    btSistemas.addEventListener("click", calcularNumero)
     </script>
 </body>
 </html>
