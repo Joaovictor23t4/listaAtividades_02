@@ -1,23 +1,53 @@
-<script>
-    /*
-    //PROBLEMA
-    Faça um script que pergunte em que turno você estuda.
-    Peça para digitar M-matutino ou V-Vespertino ou N-Noturno.
-    Imprima a mensagem
-    - "Bom Dia!"
-    - "Boa Tarde!" ou
-    - "Boa Noite!" ou
-    - "Valor Inválido!"
-    conforme o caso.
-    */
+<!DOCTYPE html>
+<html lang="pt-BR">
 
-    //ENTRADA
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turno Estudo</title>
+</head>
 
-    
-    //PROCESSAMENTO
+<body>
 
-    
-    //SAÍDA
-    
+    <h1>Turno Escola</h1>
 
-</script>
+    <h2>Em que turno você estuda?</h2>
+
+    <p> M (Matutino), V (Vespertino) ou N (Noturno) </p>
+
+    <p>Turno:
+        <input type="text" name="inTurno" id="inTurno">
+    </p>
+
+    <p>
+        <input type="button" value="Ver Seu Período" name="btOla" id="btOla">
+    </p>
+
+    <h3 id="outTurno"> </h3>
+    <script>
+        function olaTurno() {
+            let inTurno = document.getElementById("inTurno").value.toUpperCase();
+            if (inTurno === "M") {
+                document.getElementById("outTurno").textContent = `Bom dia!`;
+            }
+
+            else if (inTurno === "V") {
+                document.getElementById("outTurno").textContent = `Boa tarde!`;
+            }
+
+            else if (inTurno === "N") {
+                document.getElementById ("outTurno").textContent = `Boa noite!`;
+            }
+
+            else {
+                document.getElementById("outTurno").textContent = `Valor Inválido! Por favor, no campo de texto use somente M,V ou N!`;
+            }
+        }
+
+        let btOla = document.getElementById ("btOla");
+        btOla.addEventListener("click", olaTurno);
+    </script>
+</body>
+
+</html>

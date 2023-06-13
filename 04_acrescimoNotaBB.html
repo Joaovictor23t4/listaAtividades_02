@@ -1,13 +1,43 @@
-<meta charset="UTF-8" />
-<script>
-    // Um professor instituiu o programa BB na sua disciplina. Nesse programa, um aluno com notas melhores (o big brother) “adota” um aluno com dificuldades (o little brother) e o ajuda a aprender, em troca de um incentivo em sua nota, que é dado em função de quanto ele ajudou o seu colega a melhorar o próprio resultado. Esse programa recebe a nota do little brother antes de receber ajuda, e a sua nota depois que o big brother o ajudou, e retorna o acréscimo que o big brother receberá em sua nota pela ajuda. O acréscimo é de 1/4 da diferença das notas, se for positivo.
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acréscimo</title>
+</head>
+<body>
+    <h1>Programa Acréscimo BB</h1>
 
-    // entrada
+    <p>Nota Antes:
+        <input type="number" name="primeiraNota" id="primeiraNota">
+    </p>
 
-    
-    // processamento
+    <p>Nota Depois:
+        <input type="number" name="segundaNota" id="segundaNota">
+    </p>
 
-    
-    // saída
+    <p><input type="button" value="Ver Acréscimo" id="btAcrescimo"></p>
 
-</script>
+    <h3 id="outAcrescimo"></h3>
+
+    <script>
+        function verAcrescimo() {
+            let primeiraNota = document.getElementById("primeiraNota").value;
+            let segundaNota = document.getElementById("segundaNota").value;
+            let calculo = (segundaNota - primeiraNota) / 4;
+
+            if ((segundaNota - primeiraNota) > 0) {
+                document.getElementById("outAcrescimo").textContent = `Acréscimo de ${calculo}`;
+            }
+
+            else {
+                document.getElementById("outAcrescimo").textContent = `Sem acréscimo!`;
+            }
+        }
+
+        let btAcrescimo = document.getElementById("btAcrescimo");
+        btAcrescimo.addEventListener("click", verAcrescimo);
+    </script>
+</body>
+</html>
