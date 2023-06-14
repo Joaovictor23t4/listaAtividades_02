@@ -8,37 +8,88 @@
 </head>
 <body>
     <h1>Programa Desconto Gasolina</h1>
+
+    <p>Tipo de Combustível: A (álcool) e G (gasolina)
+        <input type="text" name="inTipo" id="inTipo"/>
+    </p>
     
-    <p>Quantidade de Gasolina Colocada:
-        <input type="number" name="gasolinaColocada" id="gasolinaColocada"/>
+    <p>Quantidade de Combustível Colocada:
+        <input type="number" name="inCombustivelColocado" id="inCombustivelColocado"/>
     </p>
 
+    <p>
+        <input type="button" value="Ver Desconto" name="btDesconto" id="btDesconto"/>
+    </p>
 
+    <h3 id="outTipo"></h3>
+    <h3 id="outDesconto"></h3>
+
+    <script>
+        /*
+        //PROBLEMA
+        Um posto está vendendo combustíveis com a seguinte tabela de descontos:
+        Álcool:
+        - até 20 litros, desconto de 3% por litro
+        - acima de 20 litros, desconto de 5% por litro
+    
+        Gasolina:
+        - até 20 litros, desconto de 4% por litro
+        - acima de 20 litros, desconto de 6% por litro
+        
+        Escreva um algoritmo que leia o número de litros vendidos, o tipo de combustível (codificado da seguinte forma: A-álcool, G-gasolina), calcule e imprima o valor a ser pago pelo cliente sabendo-se que o preço do litro da gasolina é R$ 6,50 o preço do litro do álcool é R$ 6,10.
+        */
+    
+        //ENTRADA
+        function calcularDesconto() {
+        let inTipo = document.getElementById("inTipo").value.toUpperCase();
+        let inCombustivelColocado = document.getElementById("inCombustivelColocado").value.toUpperCase();
+        //PROCESSAMENTO
+        let calculoAlcool = inCombustivelColocado * 6.10;
+        let calculoGasolina = inCombustivelColocado * 6.50;
+
+        if (inTipo === "G" || inTipo === "GASOLINA") {
+            if (inCombustivelColocado <= 20) {
+                calculoGasolina = calculoGasolina - (calculoGasolina * 0.4);
+                
+                document.getElementById("outTipo").textContent = `Tipo: Gasolina`;
+
+                document.getElementById("outDesconto").textContent = `Desconto: R$${calculoGasolina.toFixed(2).replace("." , ",")}`
+            }
+
+            else {
+                calculoGasolina = calculoGasolina - (calculoAlcool * 0.6);
+
+                document.getElementById("outTipo").textContent = `Tipo: Gasolina`;
+
+                document.getElementById("outDesconto").textContent = `Desconto: R$${calculoGasolina.toFixed(2).replace("." , ",")}`
+            }
+        }
+
+        else if (inTipo === "A" || inTipo === "ALCOOL") {
+            if (inCombustivelColocado <= 20) {
+                calculoAlcool = calculoAlcool - (calculoAlcool * 0.3);
+                
+                document.getElementById("outTipo").textContent = `Tipo: Álcool`;
+
+                document.getElementById("outDesconto").textContent = `Desconto: R$${calculoAlcool.toFixed(2).replace("." , ",")}`
+            }
+
+            else {
+                calculoAlcool = calculoAlcool - (calculoAlcool * 0.5);
+
+                document.getElementById("outTipo").textContent = `Tipo: Álcool`;
+
+                document.getElementById("outDesconto").textContent = `Desconto: R$${calculoAlcool.toFixed(2).replace("." , ",")}`
+            }
+        }
+
+        else {
+            document.getElementById("outTipo").textContent = `Valor inválido! Por favor, escolha G para Gasolina ou A para Álcool.`
+        }
+    }
+        //SAÍDA
+        let btDesconto = document.getElementById("btDesconto");
+        btDesconto.addEventListener("click", calcularDesconto);
+    </script>
 </body>
 </html>
-
-<script>
-    /*
-    //PROBLEMA
-    Um posto está vendendo combustíveis com a seguinte tabela de descontos:
-    Álcool:
-    - até 20 litros, desconto de 3% por litro
-    - acima de 20 litros, desconto de 5% por litro
-
-    Gasolina:
-    - até 20 litros, desconto de 4% por litro
-    - acima de 20 litros, desconto de 6% por litro
-    
-    Escreva um algoritmo que leia o número de litros vendidos, o tipo de combustível (codificado da seguinte forma: A-álcool, G-gasolina), calcule e imprima o valor a ser pago pelo cliente sabendo-se que o preço do litro da gasolina é R$ 6,50 o preço do litro do álcool é R$ 6,10.
-    */
-
-    //ENTRADA
-
-
-    //PROCESSAMENTO
-
-    
-    //SAÍDA
-
-
-</script>
