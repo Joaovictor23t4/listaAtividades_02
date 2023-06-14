@@ -1,18 +1,65 @@
-<meta charset="UTF-8" />
-<script>
-    // Problema
-    // imc - Escreva uma função que calcula o índice de massa corporal(imc = peso / altura ** 2), de /// acordo com a seguinte tabela:
-    // imc <= 18.5: "Subpeso"
-    // imc <= 25.0: "Normal"
-    // imc <= 30.0: "Sobrepeso"
-    // imc > 30: "Obeso"
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Índice de Massa Corporal</title>
+</head>
+<body>
+    <h1>Programa IMC</h1>
 
-    // Entrada
+    <p>Peso:
+        <input type="number" name="inPeso" id="inPeso"/>
+    </p>
 
+    <p>Altura (Em Metros):
+        <input type="number" name="inAltura" id="inAltura"/>
+    </p>
+
+    <p>
+        <input type="button" value="Calcular" name="btCalcular" id="btCalcular"/>
+    </p>
+
+    <h3 id="outSituacao"></h3>
+
+    <script>
+        // Problema
+        // imc - Escreva uma função que calcula o índice de massa corporal(imc = peso / altura ** 2), de /// acordo com a seguinte tabela:
+        // imc <= 18.5: "Subpeso"
+        // imc <= 25.0: "Normal"
+        // imc <= 30.0: "Sobrepeso"
+        // imc > 30: "Obeso"
     
-    // Processamento
+        // Entrada
+        function calcularImc() {
+            let inPeso = document.getElementById("inPeso").value.replace("," , ".");
+            let inAltura = document.getElementById("inAltura").value;
+        // Processamento
+        let imc = inPeso / (inAltura ** 2);
 
-    
-    // Saída
+        if (imc <= 18.5) {
+            document.getElementById("outSituacao").textContent = `Situação: Subpeso`;
+        }
 
-</script>
+        else if (18.5 < imc && imc <= 25) {
+            document.getElementById("outSituacao").textContent = `Situação: Normal`
+        }
+
+        else if (25 < imc && imc <= 30) {
+            document.getElementById("outSituacao").textContent = `Situação: Sobpeso`;
+        }
+
+        else if (imc > 30) {
+            document.getElementById("outSituacao").textContent = `Situação: Obeso`;
+        }
+
+        else {
+            document.getElementById("outSituacao").textContent = `Valor Inválido! Por favor, verifique se seu número não tem símbolos especiais ou qualquer outro símbolo a não ser números`;
+        }
+        }
+        // Saída
+        let btCalcular = document.getElementById("btCalcular");
+        btCalcular.addEventListener("click", calcularImc);
+    </script>
+</body>
+</html>
