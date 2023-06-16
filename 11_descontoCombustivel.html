@@ -22,6 +22,7 @@
     </p>
 
     <h3 id="outTipo"></h3>
+    <h3 id="outPrecoOriginal"></h3>
     <h3 id="outDesconto"></h3>
 
     <script>
@@ -47,11 +48,16 @@
         let calculoAlcool = inCombustivelColocado * 6.10;
         let calculoGasolina = inCombustivelColocado * 6.50;
 
+        let auxCalculoGasolina = calculoGasolina;
+        let auxCalculoAlcool = calculoAlcool;
+
         if (inTipo === "G" || inTipo === "GASOLINA") {
-            if (inCombustivelColocado <= 20) {
+            if (inCombustivelColocado <= 20) { 
                 calculoGasolina = calculoGasolina - (calculoGasolina * 0.4);
                 
                 document.getElementById("outTipo").textContent = `Tipo: Gasolina`;
+
+                document.getElementById("outPrecoOriginal").textContent = `Preço: R$${auxCalculoGasolina.toFixed(2).replace("." , ",")}`;
 
                 document.getElementById("outDesconto").textContent = `Desconto: R$${calculoGasolina.toFixed(2).replace("." , ",")}`
             }
@@ -60,6 +66,8 @@
                 calculoGasolina = calculoGasolina - (calculoAlcool * 0.6);
 
                 document.getElementById("outTipo").textContent = `Tipo: Gasolina`;
+
+                document.getElementById("outPrecoOriginal").textContent = `Preço: R$${auxCalculoGasolina.toFixed(2).replace("." , ",")}`;
 
                 document.getElementById("outDesconto").textContent = `Desconto: R$${calculoGasolina.toFixed(2).replace("." , ",")}`
             }
@@ -71,6 +79,9 @@
                 
                 document.getElementById("outTipo").textContent = `Tipo: Álcool`;
 
+
+                document.getElementById("outPrecoOriginal").textContent = `Preço: R$${auxCalculoAlcool.toFixed(2).replace("." , ",")}`;
+
                 document.getElementById("outDesconto").textContent = `Desconto: R$${calculoAlcool.toFixed(2).replace("." , ",")}`
             }
 
@@ -78,6 +89,8 @@
                 calculoAlcool = calculoAlcool - (calculoAlcool * 0.5);
 
                 document.getElementById("outTipo").textContent = `Tipo: Álcool`;
+
+                document.getElementById("outPrecoOriginal").textContent = `Preço: R$${auxCalculoAlcool.toFixed(2).replace("." , ",")}`;
 
                 document.getElementById("outDesconto").textContent = `Desconto: R$${calculoAlcool.toFixed(2).replace("." , ",")}`
             }

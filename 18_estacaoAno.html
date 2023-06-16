@@ -17,6 +17,10 @@
         <input type="text" name="inMes" id="inMes"/>
     </p>
 
+    <p>Dia:
+        <input type="number" name="inDia" id="inDia">
+    </p>
+
     <p>
         <input type="button" value="Ver Estação" name="btEstacao" id="btEstacao"/>
     </p>
@@ -31,24 +35,51 @@
         */
     
         //ENTRADA
+        function verEstacao() {
         let inHemisferio = document.getElementById("inHemisferio").value.toUpperCase();
         let inMes = document.getElementById("inMes").value.toUpperCase();
-        let estacao;
+        let inDia = document.getElementById("inDia").value*1;
         //PROCESSAMENTO
-        switch (inHemisferio) {
-            case "NORTE":
-                switch(inMes) {
-                    case "DEZEMBRO": 
-                    case "JANEIRO": 
-                    case "FEVEREIRO": 
-                    case "MARÇO": 
-                    let estacao = "Inverno"
-                } 
 
+        if (inHemisferio === "NORTE") {
+            if ((inMes === "DEZEMBRO" && inDia >= 23) || inMes === "JANEIRO" || inMes === "FEVEREIRO" || (inMes === "MARÇO" && inDia <= 21)) {
+                document.getElementById("outEstacao").textContent = `Estação: Inverno`;
+            }
+
+            else if ((inMes === "MARÇO" && inDia >= 22) || inMes === "ABRIL" || inMes === "MAIO" || (inMes === "JUNHO" && inDia <= 21)) {
+                document.getElementById("outEstacao").textContent = `Estação: Primavera`;
+            }
+
+            else if ((inMes === "JUNHO" && inDia >= 22) || inMes === "JULHO" || inMes ===  "AGOSTO" <= 22 || (inMes === "SETEMBRO" && inDia <= 22)) {
+                document.getElementById("outEstacao").textContent = `Estação: Verão`;
+            }
+
+            else if ((inMes === "SETEMBRO" && inDia >= 23) ||inMes === "OUTUBRO" || inMes === "NOVEMBRO" || (inMes === "DEZEMBRO" && inDia <= 22)) {
+                document.getElementById("outEstacao").textContent = `Estação: Outono`;
+            }
         }
+
+        else if (inHemisferio === "SUL") {
+            if ((inMes === "DEZEMBRO" && inDia >= 24) || inMes === "JANEIRO" || inMes === "FEVEREIRO" || (inMes === "MARÇO" && inDia <= 20)) {
+                document.getElementById("outEstacao").textContent = `Estação: Verão`;
+            }
+
+            else if ((inMes === "MARÇO" && inDia >= 21) || inMes === "ABRIL" || inMes === "MAIO" || (inMes === "JUNHO" && inDia <= 21)) {
+                document.getElementById("outEstacao").textContent = `Estação: Outono`;
+            }
+
+            else if ((inMes === "JUNHO" && inDia >= 22) || inMes === "JULHO" || inMes ===  "AGOSTO" || (inMes === "SETEMBRO" && inDia <= 22)) {
+                document.getElementById("outEstacao").textContent = `Estação: Inverno`;
+            }
+
+            else if ((inMes === "SETEMBRO" && inDia >= 24) ||inMes === "OUTUBRO" || inMes === "NOVEMBRO" || (inMes === "DEZEMBRO" && inDia <= 23)) {
+                document.getElementById("outEstacao").textContent = `Estação: Primavera`;
+            }
+        }
+    }
         //SAÍDA
-    
-    
+        let btEstacao = document.getElementById("btEstacao");
+        btEstacao.addEventListener("click", verEstacao);
     </script>
 </body>
 </html>
