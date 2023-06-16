@@ -1,11 +1,42 @@
-<meta charset="UTF-8" />
-<script>
-    // Recebe um ano e informa se ele é bissexto ou não.
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ano Bissexto</title>
+</head>
+<body>
+    <h1>Programa Ano Bissexto</h1>
 
-    // Entrada
+    <p>Ano:
+        <input type="number" name="inAno" id="inAno">
+    </p>
+
+    <p><input type="button" value="Verificar" name="btVerificar" id="btVerificar"/></p>
+
+    <h3 id="outAnoBissexto"></h3>
+
+    <script>
+        // Recebe um ano e informa se ele é bissexto ou não.
     
-    // Processamento
+        // Entrada
+        function verificarAnoBissexto() {
+        let inAno = document.getElementById("inAno").value; 
+        // Processamento
+        let verificarAno = inAno % 4;
 
-    // Saída
+        if (verificarAno === 0) {
+            document.getElementById("outAnoBissexto").textContent = `É um ano bissexto`
+        }
 
-</script>
+        else {
+            document.getElementById("outAnoBissexto").textContent = `Não é um ano bissexto  `
+        }
+    }
+        // Saída
+        let btVerificar = document.getElementById("btVerificar");
+        btVerificar.addEventListener("click", verificarAnoBissexto);
+    </script>
+</body>
+</html>

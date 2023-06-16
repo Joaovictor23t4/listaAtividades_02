@@ -27,16 +27,20 @@
     
         //ENTRADA
         function verificarNumero() {
-        let inNum = document.getElementById("inNum").value.replace("," , ".");
-        //PROCESSAMENTO 
-        let verificar = Number.isInteger("inNum")
+        let inNum = document.getElementById("inNum").value;
+        //PROCESSAMENTO
+        let verificar = inNum % 1;
+        
+        if (verificar === 0) {
+            document.getElementById("outVerificado").textContent = `É um inteiro` 
+        }
 
-        if(verificar === true) {
-            document.getElementById("outVerificado").textContent = `É um inteiro`;
+        else if (verificar !== 0) {
+            document.getElementById("outVerificado").textContent = `É um decimal`
         }
 
         else {
-            document.getElementById("outVerificado").textContent = `É um decimal`;
+            document.getElementById("outVerificado").textContent = `Valor Inválido! Verifique se não há símbolos especiais.`
         }
         }
         //SAÍDA

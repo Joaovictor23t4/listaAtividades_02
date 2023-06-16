@@ -1,17 +1,64 @@
-<meta charset="UTF-8" />
-<script>
-    // Recebe o preço do produto e calcula o aumento do preço, baseado no seguinte critério:
-        //- até 280(inclusive): aumento de 20 %
-        //- até 700(inclusive): aumento de 15 %
-        //- até 1500(inclusive): aumento de 10 %
-        //- acima de 1500: aumento de 5 %
-    
-    // Entrada
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Aumento Preço</title>
+</head>
+<body>
+    <h1>Programa Inflação</h1>
 
-    
-    // Processamento
+    <p>Preço do Produto:
+        <input type="number" name="inPreco" id="inPreco"/>
+    </p>
 
-    
-    // Saída
+    <p>
+        <input type="button" value="Ver aumento" name="btAumento" id="btAumento"/>
+    </p>
 
-</script>
+    <h3 id="outAumento"></h3>
+
+    <script>
+        // Recebe o preço do produto e calcula o aumento do preço, baseado no seguinte critério:
+            //- até 280(inclusive): aumento de 20 %
+            //- até 700(inclusive): aumento de 15 %
+            //- até 1500(inclusive): aumento de 10 %
+            //- acima de 1500: aumento de 5 %
+        
+        // Entrada
+        function inflacao() {
+        let inPreco = document.getElementById("inPreco").value*1;
+        // Processamento
+
+        let aumento20 = inPreco + (inPreco * 0.2);
+        let aumento15 = inPreco + (inPreco * 0.15);
+        let aumento10 = inPreco + (inPreco * 0.1);
+        let aumento5 = inPreco + (inPreco * 0.05);
+
+        if (inPreco <= 280) {
+            document.getElementById("outAumento").textContent = `O aumento foi de R$${aumento20}`
+        }
+
+        else if (inPreco > 280 && inPreco <= 700) {
+            document.getElementById("outAumento").textContent = `O aumento foi de: R$${aumento15}`
+        }
+
+        else if (inPreco > 700 && inPreco <= 1500) {
+            document.getElementById("outAumento").textContent = `O aumento foi de: R$${aumento10}`
+        }
+
+        else if (inPreco > 1500) {
+            document.getElementById("outAumento").textContent = `O aumento foi de: R$${aumento5}`
+        }
+
+        else {
+            document.getElementById("outAumento").textContent = `Valor Inválido! Verifique se não há símbolos especiais e tente novamente`
+        }
+    }
+        // Saída
+        let btAumento = document.getElementById("btAumento");
+        btAumento.addEventListener("click", inflacao);
+    </script>
+</body>
+</html>
