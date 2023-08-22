@@ -3,14 +3,18 @@
     //PROBLEMA
     Faça um script que peça um número inteiro e determine se ele é par ou ímpar.
     */
+   
+    const numInt = Number(prompt(`Escolha um número inteiro`));
 
-    //ENTRADA
+    if (numInt % 1 !== 0) {
+        alert(`O número não é inteiro!`);
+    }
 
-    
-    //PROCESSAMENTO
-    
-    
-    //SAÍDA
-    
-    
+    else if (numInt % 2 === 0) {
+        alert(`Seu número é par!`);
+    }
+
+    else if (numInt % 2 !== 0) {
+        alert(`Seu número é ímpar!`);
+    }    
 </script>

@@ -8,8 +8,25 @@
     */
 
     //ENTRADA
+    const num1 = Number(prompt(`Escolha um número!`));
+    const num2 = Number(prompt(`Escolha outro número!`));
+    const operacao = Number(prompt(`Escolha uma operação: 1- Adição; 2- Subtração; 3- Multiplicação; 4- Divisão`));
 
+    let operando;
 
+    if (operacao === 1) {
+        operando = num1 + num2;
+    } else if (operacao === 2) {
+        operando = num1 - num2;
+    } else if (operacao === 3) {
+        operando = num1 * num2;
+    } else if (operacao === 4) {
+        operando = num1 / num2;
+    }
+
+    let parImpar = operando % 2;
+    let familia = operando / 1;
+    let carga = operando / 1;
     //PROCESSAMENTO
 
     
