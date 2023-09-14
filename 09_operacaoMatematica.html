@@ -12,7 +12,8 @@
     const num2 = Number(prompt(`Escolha outro número!`));
     const operacao = Number(prompt(`Escolha uma operação: 1- Adição; 2- Subtração; 3- Multiplicação; 4- Divisão`));
 
-    let operando;
+    let operando = 0;
+    let mensagem = "";
 
     if (operacao === 1) {
         operando = num1 + num2;
@@ -24,13 +25,29 @@
         operando = num1 / num2;
     }
 
+    mensagem += "O resultado foi " + operando + " ele é um número "
+
     let parImpar = operando % 2;
     let familia = operando / 1;
-    let carga = operando / 1;
-    //PROCESSAMENTO
 
-    
-    //SAÍDA
+    if (parImpar === 0) {
+        mensagem += "par, ";
+    } else {
+        mensagem += "ímpar, ";
+    }
 
+    if (familia > 0) {
+        mensagem += "positivo e ";
+    } else {
+        mensagem += "negativo e ";
+    }
+
+    if (Number.isInteger(operando) === true) {
+        mensagem += "inteiro";
+    } else {
+        mensagem += "decimal";
+    }
+
+    alert(`${mensagem}`);
 
 </script>
